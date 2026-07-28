@@ -1,0 +1,96 @@
+/* Background Color */
+body
+{
+    background-color:#E6F7FF;
+}
+
+/* ID Selector */
+#heading
+{
+    color:#8B0000;
+    font-style:italic;
+    font-family:Georgia;
+    text-align:center;
+}
+
+/* Class Selector */
+.welcome
+{
+    color:#00008B;
+    font-style:italic;
+    font-size:20px;
+    text-align:center;
+}
+
+/* Class Selector */
+.subheading
+{
+    color:#006400;
+    font-style:italic;
+}
+
+/* Navigation Links */
+a
+{
+    color:#8B0000;
+    text-decoration:none;
+    font-weight:bold;
+    margin:10px;
+}
+
+a:hover
+{
+    color:#FF4500;
+}
+
+/* Image Background */
+.banner
+{
+    background-color:#FFF8DC;
+    padding:15px;
+    display:inline-block;
+    border:2px solid black;
+}
+
+/* Video */
+video
+{
+    border:3px solid #8B0000;
+}
+
+/* Table */
+table
+{
+    background-color:#FFFFFF;
+    border-collapse:collapse;
+}
+
+/* Table Heading */
+th
+{
+    background-color:#D8BFD8;
+    color:#000080;
+    padding:12px;
+}
+
+/* Table Data */
+td
+{
+    padding:12px;
+    text-align:center;
+}
+
+/* List */
+.list
+{
+    color:#4B0082;
+    font-style:italic;
+}
+
+/* Footer */
+.footer
+{
+    color:#8B0000;
+    font-style:italic;
+    font-weight:bold;
+}
