@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Job Portal Registration</title>
+<style>
+body{
+ background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjT8V6_ejc4qb5V7cybQHC_F18vQA6JdIAYL5M5IpKnA&s=10");
+font-family:Arial,sans-serif;
+}
+.container{
+width:500px;
+margin:30px auto;
+background-color:white;
+padding:20px;
+border:3px solid #4682B4;
+border-radius:10px;
+}
+h1{
+text-align:center;
+color:#8B0000;
+font-style:italic;
+}
+nav{
+text-align:center;
+margin-bottom:20px;
+}
+nav a{
+text-decoration:none;
+font-weight:bold;
+color:#00008B;
+padding:10px;
+}
+nav a:hover{
+color:red;
+}
+label{
+display:block;
+margin-top:12px;
+font-weight:bold;
+font-style:italic;
+color:#000080;
+}
+input{
+width:100%;
+padding:8px;
+margin-top:5px;
+border:1px solid #4682B4;
+border-radius:5px;
+box-sizing:border-box;
+}
+button{
+width:100%;
+padding:10px;
+margin-top:20px;
+background-color:green;
+color:white;
+font-size:20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+button:hover{
+background-color:darkgreen;
+}
+.error{
+color:red;
+font-size:14px;
+}
+#successMsg{
+color:green;
+font-size:18px;
+font-weight:bold;
+text-align:center;
+margin-top:15px;
+}
+</style>
+<script>
+function validateForm()
+{
+document.getElementById("fullNameError").innerHTML="";
+document.getElementById("emailError").innerHTML="";
+document.getElementById("phoneError").innerHTML="";
+document.getElementById("passwordError").innerHTML="";
+document.getElementById("jobTitleError").innerHTML="";
+document.getElementById("experienceError").innerHTML="";
+document.getElementById("linkedinError").innerHTML="";
+document.getElementById("successMsg").innerHTML="";
+var fullName=document.getElementById("fullName").value.trim();
+var email=document.getElementById("email").value.trim();
+var phone=document.getElementById("phone").value.trim();
+var password=document.getElementById("password").value;
+var jobTitle=document.getElementById("jobTitle").value.trim();
+var experience=document.getElementById("experience").value;
+var linkedin=document.getElementById("linkedin").value.trim();
+var valid=true;
+/* Full Name */
+if(fullName=="")
+{
+document.getElementById("fullNameError").innerHTML="Enter Full Name";
+valid=false;
+}
+/* Email */
+var emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+if(!emailPattern.test(email))
+{
+document.getElementById("emailError").innerHTML="Enter Valid Email";
+valid=false;
+}
+/* Phone */
+var phonePattern=/^[0-9]{10}$/;
+
+if(!phonePattern.test(phone))
+{
+document.getElementById("phoneError").innerHTML="Enter 10 Digit Phone Number";
+valid=false;
+}
+/* Password */
+if(password.length<6)
+{
+document.getElementById("passwordError").innerHTML="Password must contain at least 6 characters";
+valid=false;
+}
+/* Job Title */
+if(jobTitle=="")
+{
+document.getElementById("jobTitleError").innerHTML="Enter Job Title";
+valid=false;
+}
+/* Experience */
+if(experience=="")
+{
+document.getElementById("experienceError").innerHTML="Enter Experience";
+valid=false;
+}
+/* LinkedIn Validation */
+var linkedinPattern=/^(https?:\/\/)?(www\.)?linkedin\.com\/in\/[A-Za-z0-9_-]+\/?$/;
+if(linkedin=="")
+{
+document.getElementById("linkedinError").innerHTML="Enter LinkedIn URL";
+valid=false;
+}
+else if(!linkedinPattern.test(linkedin))
+{
+document.getElementById("linkedinError").innerHTML="Enter Valid LinkedIn Profile URL";
+valid=false;
+}
+/* Success */
+if(valid)
+{
+alert("Successfully Registered!");
+document.getElementById("successMsg").innerHTML="Registration Successful";
+return true;
+}
+return false;
+return valid;
+}
+</script>
+</head>
+<body>
+<div class="container">
+<h1>JOB PORTAL REGISTRATION</h1>
+<nav>
+<a href="https://www.hcltech.com/careers" target="_blank">HCL Careers</a> |
+<a href="https://www.naukri.com/" target="_blank">Jobs</a> |
+<a href="https://www.hcltech.com/about-us" target="_blank">About Us</a> |
+<a href="https://www.hcltech.com/contact-us" target="_blank">Contact Us</a>
+</nav>
+<form onsubmit="return validateForm()">
+<label>Full Name *</label>
+<input type="text" id="fullName" placeholder="Enter Full Name">
+<div class="error" id="fullNameError"></div>
+<label>Email *</label>
+<input type="text" id="email" placeholder="Enter Email">
+<div class="error" id="emailError"></div>
+<label>Phone Number *</label>
+<input type="text" id="phone" placeholder="10 Digit Phone Number">
+<div class="error" id="phoneError"></div>
+<label>Password *</label>
+<input type="password" id="password" placeholder="Minimum 6 Characters">
+<div class="error" id="passwordError"></div>
+<label>Desired Job Title *</label>
+<input type="text" id="jobTitle" placeholder="Web Developer">
+<div class="error" id="jobTitleError"></div>
+<label>Years of Experience *</label>
+<input type="number" id="experience" placeholder="0">
+<div class="error" id="experienceError"></div>
+<label>LinkedIn Profile URL *</label>
+<input type="text" id="linkedin" placeholder="www.linkedin.com/in/yourname">
+<div class="error" id="linkedinError"></div>
+<button type="submit">Register</button>
+<div id="successMsg"></div>
+</form>
+</div>
+</body>
+</html>
