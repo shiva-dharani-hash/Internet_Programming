@@ -1,0 +1,309 @@
+
+Servlet.java
+package com.exam;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+@WebServlet("/ExamServlet")
+public class ExamServlet extends HttpServlet {
+    @Override
+    protected void doPost(HttpServletRequest request,
+                           HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String studentName = request.getParameter("studentName");
+        String registerNo = request.getParameter("registerNo");
+        String email = request.getParameter("email");
+        String department = request.getParameter("department");
+        String year = request.getParameter("year");
+
+        String q1 = request.getParameter("q1");
+        String q2 = request.getParameter("q2");
+        String q3 = request.getParameter("q3");
+        String q4 = request.getParameter("q4");
+        String q5 = request.getParameter("q5");
+        String q6 = request.getParameter("q6");
+        String q7 = request.getParameter("q7");
+        String q8 = request.getParameter("q8");
+        String q9 = request.getParameter("q9");
+        String q10 = request.getParameter("q10");
+        int score = 0;
+        if ("Hyper Text Markup Language".equals(q1)) {
+            score++;
+        }
+        if ("<p>".equals(q2)) {
+            score++;
+        }
+        if ("CSS".equals(q3)) {
+            score++;
+        }
+        if ("JavaScript".equals(q4)) {
+            score++;
+        }
+        if ("Uniform Resource Locator".equals(q5)) {
+            score++;
+        }
+        if ("HTTP".equals(q6)) {
+            score++;
+        }
+        if ("<a>".equals(q7)) {
+            score++;
+        }
+        if ("<img>".equals(q8)) {
+            score++;
+        }
+        if ("color".equals(q9)) {
+            score++;
+        }
+        if ("<form>".equals(q10)) {
+            score++;
+        }
+        double percentage = (score / 10.0) * 100;
+        String result;
+        if (score >= 5) {
+            result = "PASS";
+        } else {
+            result = "FAIL";
+        }
+        PrintWriter out = response.getWriter();
+        out.println("<!DOCTYPE html>");
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Exam Result</title>");
+        out.println("<style>");
+        out.println("body {");
+        out.println("font-family: Arial, sans-serif;");
+        out.println("background: linear-gradient(135deg, #dbeafe, #f0f9ff);");
+        out.println("margin: 0;");
+        out.println("padding: 30px;");
+        out.println("}");
+        out.println(".result {");
+        out.println("max-width: 800px;");
+        out.println("margin: auto;");
+        out.println("background: white;");
+        out.println("padding: 30px;");
+        out.println("border-radius: 15px;");
+        out.println("box-shadow: 0 5px 20px rgba(0,0,0,0.15);");
+        out.println("}");
+        out.println("h1 {");
+        out.println("text-align: center;");
+        out.println("color: #16a34a;");
+        out.println("}");
+        out.println("h2 {");
+        out.println("color: #1e3a8a;");
+        out.println("margin-top: 30px;");
+        out.println("}");
+        out.println(".student-info {");
+        out.println("background-color: #eff6ff;");
+        out.println("padding: 15px;");
+        out.println("border-radius: 8px;");
+        out.println("margin-bottom: 20px;");
+        out.println("}");
+        out.println(".student-info p {");
+        out.println("margin: 8px 0;");
+        out.println("}");
+        out.println(".score {");
+        out.println("text-align: center;");
+        out.println("font-size: 30px;");
+        out.println("font-weight: bold;");
+        out.println("color: #1e3a8a;");
+        out.println("margin-top: 20px;");
+        out.println("}");
+        out.println(".percentage {");
+        out.println("text-align: center;");
+        out.println("font-size: 22px;");
+        out.println("color: #2563eb;");
+        out.println("margin-top: 10px;");
+        out.println("}");
+        out.println(".pass {");
+        out.println("text-align: center;");
+        out.println("font-size: 25px;");
+        out.println("font-weight: bold;");
+        out.println("color: #16a34a;");
+        out.println("margin-top: 10px;");
+        out.println("}");
+        out.println(".fail {");
+        out.println("text-align: center;");
+        out.println("font-size: 25px;");
+        out.println("font-weight: bold;");
+        out.println("color: #dc2626;");
+        out.println("margin-top: 10px;");
+        out.println("}");
+
+       out.println(".answer {");
+        out.println("padding: 12px;");
+        out.println("margin: 10px 0;");
+        out.println("background-color: #f8fbff;");
+        out.println("border-radius: 7px;");
+        out.println("}");
+        out.println(".correct {");
+        out.println("border-left: 5px solid #16a34a;");
+        out.println("}");
+        out.println(".wrong {");
+        out.println("border-left: 5px solid #dc2626;");
+        out.println("}");
+        out.println(".home-button {");
+        out.println("display: block;");
+        out.println("width: 100%;");
+        out.println("padding: 13px;");
+        out.println("margin-top: 30px;");
+        out.println("background-color: #2563eb;");
+        out.println("color: white;");
+        out.println("text-align: center;");
+        out.println("text-decoration: none;");
+        out.println("border-radius: 7px;");
+        out.println("box-sizing: border-box;");
+        out.println("}");
+        out.println(".home-button:hover {");
+        out.println("background-color: #1e40af;");
+        out.println("}");
+        out.println("</style>");
+       out.println("</head>");
+        out.println("<body>");
+        out.println("<div class='result'>");
+        out.println("<h1>Exam Submitted Successfully!</h1>");
+        out.println("<h2>Student Details</h2>");
+        out.println("<div class='student-info'>");
+        out.println("<p><strong>Name:</strong> "
+                + escapeHtml(studentName) + "</p>");
+        out.println("<p><strong>Register Number:</strong> "
+                + escapeHtml(registerNo) + "</p>");
+        out.println("<p><strong>Email:</strong> "
+                + escapeHtml(email) + "</p>");
+        out.println("<p><strong>Department:</strong> "
+                + escapeHtml(department) + "</p>");
+        out.println("<p><strong>Year:</strong> "
+                + escapeHtml(year) + "</p>");
+        out.println("</div>");
+        out.println("<div class='score'>");
+        out.println("Score: " + score + " / 10");
+        out.println("</div>");
+
+        out.println("<div class='percentage'>");
+        out.println("Percentage: "
+                + String.format("%.2f", percentage) + "%");
+        out.println("</div>");
+        if (result.equals("PASS")) {
+            out.println("<div class='pass'>");
+            out.println("Result: PASS");
+            out.println("</div>");
+        } else {
+            out.println("<div class='fail'>");
+            out.println("Result: FAIL");
+            out.println("</div>");
+        }
+        out.println("<h2>Your Answers</h2>");
+        printAnswer(
+                out,
+                1,
+                q1,
+                "Hyper Text Markup Language"
+        );
+        printAnswer(
+                out,
+                2,
+                q2,
+                "<p>"
+        );
+       printAnswer(
+                out,
+                3,
+                q3,
+                "CSS"
+        );
+        printAnswer(
+                out,
+                4,
+                q4,
+                "JavaScript"
+        );
+        printAnswer(
+                out,
+                5,
+                q5,
+                "Uniform Resource Locator"
+        );
+        printAnswer(
+                out,
+                6,
+                q6,
+                "HTTP"
+        );
+        printAnswer(
+                out,
+                7,
+                q7,
+                "<a>"
+        );
+        printAnswer(
+                out,
+                8,
+                q8,
+                "<img>"
+        );
+        printAnswer(
+                out,
+                9,
+                q9,
+                "color"
+        );
+        printAnswer(
+                out,
+                10,
+                q10,
+                "<form>"
+        );
+        out.println("<a class='home-button' href='index.html'>");
+        out.println("Back to Registration");
+        out.println("</a>");
+        out.println("</div>");
+        out.println("</body>");
+        out.println("</html>");
+    }
+        private void printAnswer(PrintWriter out,
+                             int number,
+                             String answer,
+                             String correctAnswer) {
+        boolean correct = correctAnswer.equals(answer);
+        String cssClass;
+        if (correct) {
+            cssClass = "correct";
+        } else {
+            cssClass = "wrong";
+        }
+        String displayAnswer;
+        if (answer == null || answer.trim().isEmpty()) {
+            displayAnswer = "Not Answered";
+        } else {
+            displayAnswer = escapeHtml(answer);
+        }
+       out.println("<div class='answer " + cssClass + "'>");
+        out.println("<b>Question " + number + ":</b> ");
+        out.println(displayAnswer);
+        if (correct) {
+            out.println(" ✓ Correct");
+        } else {
+            out.println(" ✗ Wrong");
+            out.println("<br>");
+            out.println("<b>Correct Answer:</b> ");
+            out.println(escapeHtml(correctAnswer));
+        }
+        out.println("</div>");
+    }
+    private String escapeHtml(String text) {
+
+        if (text == null) {
+            return "";
+        }
+        return text
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;")
+                .replace("'", "&#39;");
+    }
+}
