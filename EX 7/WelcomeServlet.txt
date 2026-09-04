@@ -1,0 +1,60 @@
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+@WebServlet("/WelcomeServlet")
+public class WelcomeServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String name = request.getParameter("uname");
+        String password = request.getParameter("pwd");
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        if ("shiva".equals(name) && "12345".equals(password)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", name);
+            Integer visitorCount = (Integer) getServletContext().getAttribute("visitorCount");
+            if (visitorCount == null) visitorCount = 0;
+            out.println("<!DOCTYPE html><html><head><title>Welcome</title>");
+            out.println("<style>body{font-family:Arial;margin:60px;background:#f4f6f8;}");
+            out.println(".box{background:#fff;padding:25px 35px;border-radius:8px;");
+            out.println("box-shadow:0 0 10px rgba(0,0,0,0.15);max-width:450px;margin:auto;}");
+            out.println("a{display:block;margin:10px 0;color:#2c3e50;font-weight:bold;}");
+            out.println("</style></head><body>");
+            out.println("<div class='box'>");
+            out.println("<h2>Welcome, " + name + " (Authenticated)</h2>");
+            out.println("<p><b>Total Unique Visitors So Far: " + visitorCount + "</b></p>");
+             out.println("<h3>1. Hidden Form Field Demo</h3>");
+            out.println("<form action='HiddenFieldServlet' method='post'>");
+            out.println("<input type='hidden' name='hf_name' value='" + name + "'>");
+            out.println("<input type='hidden' name='hf_pwd' value='" + password + "'>");
+            out.println("<input type='submit' value='go (Hidden Field)'>");
+            out.println("</form>");       
+            out.println("<h3>2. URL Rewriting Demo</h3>");
+            out.println("<a href='URLRewriteServlet?uname=" + name + "&pwd=" + password + "'>visit (URL Rewriting)</a>");
+            out.println("</div></body></html>");
+        } else {           
+            out.println("<!DOCTYPE html><html><head><title>Login Failed</title>");
+            out.println("<style>body{font-family:Arial;margin:60px;background:#f4f6f8;}");
+            out.println(".box{background:#fff;padding:25px 35px;border-radius:8px;");
+            out.println("box-shadow:0 0 10px rgba(0,0,0,0.15);max-width:400px;margin:auto;text-align:center;}");
+            out.println(".error{color:red;font-weight:bold;}");
+            out.println("a{color:#3498db;text-decoration:none;display:inline-block;margin-top:15px;}");
+            out.println("</style></head><body>");
+            out.println("<div class='box'>");
+            out.println("<h2>Login Failed</h2>");
+            out.println("<p class='error'>Invalid Username or Password!</p>");
+            out.println("<a href='index.html'>Try Again</a>");
+            out.println("</div></body></html>");
+        }
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.getWriter().println("Please enter your details on the home page first.");
+    }
+}

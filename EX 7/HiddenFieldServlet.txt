@@ -1,0 +1,29 @@
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+@WebServlet("/HiddenFieldServlet")
+public class HiddenFieldServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String name = request.getParameter("hf_name");
+        String password = request.getParameter("hf_pwd");
+
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+       out.println("<!DOCTYPE html><html><head><title>Hidden Field Result</title>");
+        out.println("<style>body{font-family:Arial;margin:60px;background:#f4f6f8;}");
+        out.println(".box{background:#fff;padding:25px 35px;border-radius:8px;");
+        out.println("box-shadow:0 0 10px rgba(0,0,0,0.15);max-width:400px;margin:auto;text-align:center;}");
+        out.println("</style></head><body>");
+        out.println("<div class='box'>");
+        out.println("<h2>Hello, " + name + "</h2>");
+        out.println("<p><b>Password Received:</b> " + password + "</p>");
+        out.println("<p>(Passed via Hidden Form Fields, invisible to the user but submitted with the form.)</p>");
+        out.println("</div></body></html>");
+    }
+}
