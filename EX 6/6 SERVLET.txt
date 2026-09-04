@@ -1,0 +1,95 @@
+package controller;
+import dao.BusBookingDAO;
+import model.BusBooking;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+@WebServlet("/BusServlet")
+public class BusServlet extends HttpServlet {
+    @Override
+    protected void doPost(
+            HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
+       response.setContentType("text/html;charset=UTF-8");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String from = request.getParameter("from");
+        String to = request.getParameter("to");
+        String travelDate = request.getParameter("travelDate");
+        String busType = request.getParameter("busType");
+        int seats = Integer.parseInt(
+                request.getParameter("seats")
+        );
+        BusBooking booking = new BusBooking(
+                name,
+                email,
+                phone,
+                from,
+                to,
+                travelDate,
+                busType,
+                seats
+        );
+        BusBookingDAO dao = new BusBookingDAO();
+        boolean status = dao.saveBooking(booking);
+        PrintWriter out = response.getWriter();
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Bus Booking Status</title>");
+        out.println("<style>");
+        out.println("body {"
+                + "font-family: Arial;"
+                + "background: #dbeafe;"
+                + "text-align: center;"
+                + "padding: 50px;"
+                + "}");
+        out.println(".box {"
+                + "background: white;"
+                + "width: 500px;"
+                + "margin: auto;"
+                + "padding: 30px;"
+                + "border-radius: 15px;"
+                + "box-shadow: 0 5px 20px gray;"
+                + "}");
+        out.println("h1 { color: #2563eb; }");
+        out.println("</style>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<div class='box'>");
+
+        if (status) {
+            out.println("<h1>Bus Booked Successfully!</h1>");
+            out.println("<h2>Booking Details</h2>");
+            out.println("<p><b>Passenger Name:</b> "
+                    + name + "</p>");
+            out.println("<p><b>Email:</b> "
+                    + email + "</p>");
+            out.println("<p><b>Phone:</b> "
+                    + phone + "</p>");
+            out.println("<p><b>From:</b> "
+                    + from + "</p>");
+            out.println("<p><b>To:</b> "
+                    + to + "</p>");
+            out.println("<p><b>Travel Date:</b> "
+                    + travelDate + "</p>");
+            out.println("<p><b>Bus Type:</b> "
+                    + busType + "</p>");
+            out.println("<p><b>Seats:</b> "
+                    + seats + "</p>");
+            out.println("<br>");
+            out.println("<a href='index.html'>Book Another Bus</a>");
+        } else {
+            out.println("<h2>Bus Booking Failed!</h2>");
+            out.println("<a href='index.html'>Try Again</a>");
+        }
+        out.println("</div>");
+        out.println("</body>");
+        out.println("</html>");
+    }
+}

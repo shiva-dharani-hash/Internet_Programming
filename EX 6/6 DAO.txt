@@ -1,0 +1,100 @@
+package dao;
+
+
+import database.DBConnection;
+
+import model.BusBooking;
+
+
+import java.sql.Connection;
+
+import java.sql.PreparedStatement;
+
+
+public class BusBookingDAO {
+
+
+public boolean saveBooking(BusBooking booking) {
+
+
+boolean result = false;
+
+
+try {
+
+
+Connection con = DBConnection.getConnection();
+
+
+if (con == null) {
+
+System.out.println("DATABASE CONNECTION IS NULL");
+
+return false;
+
+}
+
+
+String sql = "INSERT INTO bus_bookings "
+
++ "(passenger_name, email, phone, "
+
++ "source_location, destination_location, "
+
++ "travel_date, bus_type, seats) "
+
++ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+
+PreparedStatement ps = con.prepareStatement(sql);
+
+
+ps.setString(1, booking.getName());
+
+ps.setString(2, booking.getEmail());
+
+ps.setString(3, booking.getPhone());
+
+ps.setString(4, booking.getFrom());
+
+ps.setString(5, booking.getTo());
+
+ps.setString(6, booking.getTravelDate());
+
+ps.setString(7, booking.getBusType());
+
+ps.setInt(8, booking.getSeats());
+
+
+int rows = ps.executeUpdate();
+
+
+if (rows > 0) {
+
+result = true;
+
+System.out.println("BUS BOOKING SAVED SUCCESSFULLY");
+
+}
+
+
+ps.close();
+
+con.close();
+
+
+} catch (Exception e) {
+
+
+System.out.println("DAO ERROR:");
+
+e.printStackTrace();
+
+}
+
+
+return result;
+
+}
+
+}
