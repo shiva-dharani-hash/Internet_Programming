@@ -1,0 +1,472 @@
+<style>
+
+body {
+
+font-family: Arial, sans-serif;
+
+background-color: #f4f6f8;
+
+margin: 0;
+
+padding: 30px;}
+
+.container {
+
+width: 550px;
+
+margin: auto;
+
+background-color: white;
+
+padding: 25px;
+
+border: 1px solid #ddd;
+
+border-radius: 8px;}
+
+h2 {
+
+text-align: center;
+
+color: #333;
+
+margin-bottom: 25px;}
+
+label {
+
+color: #333;
+
+font-size: 14px;}
+
+input[type="text"],
+
+input[type="date"],
+
+input[type="password"],
+
+input[type="file"],
+
+select,
+
+textarea {
+
+width: 100%;
+
+padding: 9px;
+
+margin-top: 6px;
+
+margin-bottom: 15px;
+
+border: 1px solid #ccc;
+
+border-radius: 4px;
+
+box-sizing: border-box;}
+
+textarea {
+
+height: 70px;
+
+resize: none;
+
+}
+
+
+input[type="radio"],
+
+input[type="checkbox"] {
+
+margin-right: 5px;
+
+}
+
+
+.button {
+
+width: 100%;
+
+padding: 10px;
+
+background-color: #4a6fa5;
+
+color: white;
+
+border: none;
+
+border-radius: 4px;
+
+font-size: 15px;
+
+cursor: pointer; }
+
+.button:hover {
+
+background-color: #3d5d8c;}
+
+.gender,
+
+.skills,
+
+.terms {
+
+margin-bottom: 15px;}
+
+</style>
+
+<script>
+
+function validateForm() {
+
+var name = document.getElementById("name").value.trim();
+
+var email = document.getElementById("email").value.trim();
+
+var mobile = document.getElementById("mobile").value.trim();
+
+var dob = document.getElementById("dob").value;
+
+var qualification = document.getElementById("qualification").value;
+
+var department = document.getElementById("department").value;
+
+var experience = document.getElementById("experience").value;
+
+var jobrole = document.getElementById("jobrole").value;
+
+var location = document.getElementById("location").value;
+
+var address = document.getElementById("address").value.trim();
+
+var password = document.getElementById("password").value;
+
+var confirmPassword = document.getElementById("confirmPassword").value;
+
+var resume = document.getElementById("resume").value;
+
+var terms = document.getElementById("terms").checked;
+
+var namePattern = /^[A-Za-z ]+$/;
+
+var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+var mobilePattern = /^[0-9]{10}$/;
+
+var passwordPattern =
+
+/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=!]).{8,}$/;
+
+if (name == "") {
+
+alert("Enter your Name");
+
+return false; }
+
+if (!namePattern.test(name)) {
+
+alert("Name should contain only alphabets");
+
+return false; }
+
+if (email == "") {
+
+alert("Enter Email");
+
+return false;}
+
+if (!emailPattern.test(email)) {
+
+alert("Invalid Email Address");
+
+return false; }
+
+if (mobile == "") {
+
+alert("Enter Mobile Number");
+
+return false;}
+
+if (!mobilePattern.test(mobile)) {
+
+alert("Mobile Number must contain 10 digits");
+
+return false; }
+
+if (dob == "") {
+
+alert("Select Date of Birth");
+
+return false;}
+
+var gender = document.getElementsByName("gender");
+
+var selected = false;
+
+for (var i = 0; i < gender.length; i++) {
+
+if (gender[i].checked) {
+
+selected = true;
+
+break;}}
+
+if (!selected) {
+
+alert("Select Gender");
+
+return false;}
+
+if (qualification == "") {
+
+alert("Select Qualification");
+
+return false;}
+
+if (department == "") {
+
+alert("Select Department");
+
+return false;}
+
+if (experience == "") {
+
+alert("Select Experience");
+
+return false; }
+
+var skills = document.getElementsByName("skill");
+
+var skillSelected = false;
+
+
+for (var i = 0; i < skills.length; i++) {
+
+if (skills[i].checked) {
+
+skillSelected = true;
+
+break;} }
+
+if (!skillSelected) {
+
+alert("Select at least one Skill");
+
+return false;}
+
+if (jobrole == "") {
+
+alert("Select Preferred Job Role");
+
+return false;}
+
+if (location == "") {
+
+alert("Select Preferred Location");
+
+return false;}
+
+if (address == "") {
+
+alert("Enter Address");
+
+return false;}
+
+if (password == "") {
+
+alert("Enter Password");
+
+return false;}
+
+if (!passwordPattern.test(password)) {
+
+alert("Password must contain:\n\nMinimum 8 characters\nOne Uppercase Letter\nOne Lowercase Letter\nOne Number\nOne Special Character");
+
+return false;}
+
+if (confirmPassword == "") {
+
+alert("Confirm your Password");
+
+return false;}
+
+if (password != confirmPassword) {
+
+alert("Passwords do not match");
+
+return false; }
+
+if (resume == "") {
+
+alert("Upload Resume");
+
+return false;}
+
+var extension = resume.split('.').pop().toLowerCase();
+
+if (extension != "pdf" &&
+
+extension != "doc" &&
+
+extension != "docx") {
+
+alert("Upload only PDF, DOC or DOCX file");
+
+return false;}
+
+if (!terms) {
+
+alert("Please accept Terms & Conditions");
+
+return false;}
+
+alert("Registration Successful!");
+
+return true;}</script>
+
+<h2>Registration Form</h2>
+
+<form action="registration.jsp" method="post"
+
+onsubmit="return validateForm()">
+
+<label>Name:</label>
+
+<input type="text" id="name" name="name">
+
+<label>Email:</label>
+
+<input type="text" id="email" name="email">
+
+<label>Mobile:</label>
+
+<input type="text" id="mobile" name="mobile">
+
+<label>Date of Birth:</label>
+
+<input type="date" id="dob" name="dob">
+
+<label>Gender:</label>
+
+<div class="gender">
+
+<input type="radio" name="gender" value="Male"> Male
+
+<input type="radio" name="gender" value="Female"> Female
+
+<input type="radio" name="gender" value="Other"> Other</div>
+
+<label>Qualification:</label>
+
+<select id="qualification" name="qualification">
+
+<option value="">Select Qualification</option>
+
+<option value="B.E">B.E</option>
+
+<option value="B.Tech">B.Tech</option>
+
+<option value="M.E">M.E</option>
+
+<option value="M.Tech">M.Tech</option>
+
+<option value="MCA">MCA</option>
+
+<option value="MBA">MBA</option></select>
+
+<label>Department:</label>
+
+<select id="department" name="department">
+
+<option value="">Select Department</option>
+
+<option value="CSE">Computer Science</option>
+
+<option value="IT">Information Technology</option>
+
+<option value="ECE">Electronics</option>
+
+<option value="EEE">Electrical</option>
+
+<option value="MECH">Mechanical</option> </select>
+
+<label>Experience:</label>
+
+<select id="experience" name="experience">
+
+<option value="">Select Experience</option>
+
+<option value="Fresher">Fresher</option>
+
+<option value="1-2 Years">1-2 Years</option>
+
+<option value="3-5 Years">3-5 Years</option>
+
+<option value="5+ Years">5+ Years</option> </select>
+
+<label>Skills:</label>
+
+<div class="skills">
+
+<input type="checkbox" name="skill" value="Java"> Java
+
+<input type="checkbox" name="skill" value="Python"> Python
+
+<input type="checkbox" name="skill" value="HTML"> HTML
+
+<input type="checkbox" name="skill" value="SQL"> SQL </div>
+
+<label>Preferred Job Role:</label>
+
+<select id="jobrole" name="jobrole">
+
+<option value="">Select Job Role</option>
+
+<option value="Software Developer">Software Developer</option>
+
+<option value="Web Developer">Web Developer</option>
+
+<option value="Data Analyst">Data Analyst</option>
+
+<option value="Tester">Tester</option></select>
+
+<label>Preferred Location:</label>
+
+<select id="location" name="location">
+
+<option value="">Select Location</option>
+
+<option value="Chennai">Chennai</option>
+
+<option value="Bangalore">Bangalore</option>
+
+<option value="Hyderabad">Hyderabad</option>
+
+<option value="Mumbai">Mumbai</option> </select>
+
+<label>Address:</label>
+
+<textarea id="address" name="address"></textarea>
+
+<label>Password:</label>
+
+<input type="password" id="password" name="password">
+
+<label>Confirm Password:</label>
+
+<input type="password" id="confirmPassword" name="confirmPassword">
+
+<label>Resume:</label>
+
+<input type="file" id="resume" name="resume">
+
+<div class="terms">
+
+<input type="checkbox" id="terms" name="terms">
+
+<label for="terms">I accept Terms & Conditions</label>
+
+</div>
+
+<button type="submit" class="button">Register</button>
+
+</form>
