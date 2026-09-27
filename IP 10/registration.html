@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            width: 500px;
+            max-width: 95%;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .gender {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .gender label {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .gender input {
+            width: auto;
+        }
+
+        .terms {
+            margin-top: 18px;
+        }
+
+        .terms label {
+            display: inline;
+            font-weight: normal;
+        }
+
+        .terms input {
+            width: auto;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e40af;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Registration Form</h1>
+
+    <form action="registration.php" method="POST">
+
+        <!-- Name -->
+        <label for="name">Name</label>
+        <input type="text"
+               id="name"
+               name="name"
+               required>
+
+        <!-- Email -->
+        <label for="email">Email</label>
+        <input type="text"
+               id="email"
+               name="email"
+               required>
+
+        <!-- Mobile -->
+        <label for="mobile">Mobile</label>
+        <input type="text"
+               id="mobile"
+               name="mobile"
+               maxlength="10"
+               required>
+
+        <!-- Date of Birth -->
+        <label for="dob">Date of Birth</label>
+        <input type="date"
+               id="dob"
+               name="dob"
+               required>
+
+        <!-- Gender -->
+        <label>Gender</label>
+
+        <div class="gender">
+            <label>
+                <input type="radio"
+                       name="gender"
+                       value="Male"
+                       required>
+                Male
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="gender"
+                       value="Female">
+                Female
+            </label>
+
+            <label>
+                <input type="radio"
+                       name="gender"
+                       value="Other">
+                Other
+            </label>
+        </div>
+
+        <!-- Credit Card -->
+        <label for="card">Credit Card Number</label>
+        <input type="text"
+               id="card"
+               name="card"
+               maxlength="16"
+               required>
+
+        <!-- Address -->
+        <label for="address">Address</label>
+        <textarea id="address"
+                  name="address"
+                  required></textarea>
+
+        <!-- Password -->
+        <label for="password">Password</label>
+        <input type="password"
+               id="password"
+               name="password"
+               required>
+
+        <!-- Confirm Password -->
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password"
+               id="confirm_password"
+               name="confirm_password"
+               required>
+
+        <!-- Terms -->
+        <div class="terms">
+            <input type="checkbox"
+                   id="terms"
+                   name="terms"
+                   value="accepted"
+                   required>
+
+            <label for="terms">
+                I agree to the Terms & Conditions
+            </label>
+        </div>
+
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
