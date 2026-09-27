@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>QuickBuy - Place Order</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f2f2f2;
+        }
+
+        header {
+            background: #264653;
+            color: white;
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 17px;
+        }
+
+        .container {
+            width: 500px;
+            max-width: 90%;
+            margin: 50px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #264653;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .product-details {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 7px;
+            margin-bottom: 20px;
+        }
+
+        .product-details p {
+            margin: 8px 0;
+        }
+
+        .price {
+            color: #e76f51;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        button {
+            width: 100%;
+            background: #e76f51;
+            color: white;
+            border: none;
+            padding: 14px;
+            margin-top: 25px;
+            border-radius: 5px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #d95d3f;
+        }
+
+        footer {
+            background: #264653;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>QuickBuy</h1>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="view_orders.php">Orders</a>
+
+    </nav>
+
+</header>
+
+
+
+<div class="container">
+
+    <h2>Place Your Order</h2>
+
+
+    <!-- Selected Product -->
+
+    <div class="product-details">
+
+        <p>
+            <strong>Category:</strong>
+            <span id="category">-</span>
+        </p>
+
+        <p>
+            <strong>Product:</strong>
+            <span id="product">-</span>
+        </p>
+
+        <p>
+            <strong>Price:</strong>
+            <span class="price" id="price">₹0</span>
+        </p>
+
+    </div>
+
+
+    <!-- Order Form -->
+
+    <form action="save_order.php" method="POST">
+
+
+        <input type="hidden" name="category" id="categoryInput">
+
+        <input type="hidden" name="product_name" id="productInput">
+
+        <input type="hidden" name="price" id="priceInput">
+
+
+        <label>
+            Customer Name
+        </label>
+
+        <input
+            type="text"
+            name="customer_name"
+            placeholder="Enter your name"
+            required
+        >
+
+
+        <label>
+            Email
+        </label>
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+        >
+
+
+        <label>
+            Quantity
+        </label>
+
+        <input
+            type="number"
+            name="quantity"
+            min="1"
+            value="1"
+            required
+        >
+
+
+        <button type="submit">
+            Place Order
+        </button>
+
+    </form>
+
+</div>
+
+
+
+<footer>
+
+    &copy; 2026 QuickBuy Online Store
+
+</footer>
+
+
+
+<script>
+
+    // Get values from URL
+
+    const params = new URLSearchParams(window.location.search);
+
+    const category = params.get("category");
+    const product = params.get("product");
+    const price = params.get("price");
+
+
+    // Display selected product
+
+    if (category) {
+        document.getElementById("category").textContent = category;
+        document.getElementById("categoryInput").value = category;
+    }
+
+    if (product) {
+        document.getElementById("product").textContent = product;
+        document.getElementById("productInput").value = product;
+    }
+
+    if (price) {
+        document.getElementById("price").textContent =
+            "₹" + Number(price).toLocaleString("en-IN");
+
+        document.getElementById("priceInput").value = price;
+    }
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>QuickBuy - Online Store</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f2f2f2;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #264653;
+            color: white;
+            padding: 25px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 17px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* HERO */
+
+        .hero {
+            background: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #666;
+        }
+
+        .button {
+            display: inline-block;
+            background: #e76f51;
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 17px;
+        }
+
+        .button:hover {
+            background: #d95d3f;
+        }
+
+        /* CATEGORY SECTION */
+
+        .category-section {
+            width: 85%;
+            margin: 50px auto;
+        }
+
+        .category-title {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 30px;
+            color: #264653;
+        }
+
+        /* PRODUCT GRID */
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .product img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product h3 {
+            font-size: 21px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e76f51;
+            margin: 15px 0;
+        }
+
+        .order-button {
+            display: inline-block;
+            background: #e76f51;
+            color: white;
+            text-decoration: none;
+            padding: 11px 22px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .order-button:hover {
+            background: #d95d3f;
+        }
+
+        /* FEATURES */
+
+        .features {
+            width: 85%;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature {
+            background: white;
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .feature h3 {
+            font-size: 22px;
+        }
+
+        .feature p {
+            font-size: 17px;
+            color: #555;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #264653;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .product-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 8px;
+            }
+
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <h1>QuickBuy</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="registration.html">Place Order</a>
+        <a href="view_orders.php">Orders</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h2>Welcome to QuickBuy</h2>
+
+    <p>Find useful products at affordable prices.</p>
+
+    <a href="#categories" class="button">
+        Shop Now
+    </a>
+
+</section>
+
+
+
+<!-- ALL CATEGORIES -->
+
+<section class="category-section" id="categories">
+
+
+    <!-- ELECTRONICS -->
+
+    <h2 class="category-title">
+        Electronics
+    </h2>
+
+    <div class="product-container">
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800"
+                 alt="Laptop">
+
+            <div class="product-content">
+
+                <h3>Laptop</h3>
+
+                <p>Powerful laptop for study and work.</p>
+
+                <div class="price">
+                    ₹55,000
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Electronics&product=Laptop&price=55000">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800"
+                 alt="Mobile Phone">
+
+            <div class="product-content">
+
+                <h3>Mobile Phone</h3>
+
+                <p>Modern smartphone with useful features.</p>
+
+                <div class="price">
+                    ₹25,000
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Electronics&product=Mobile%20Phone&price=25000">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800"
+                 alt="Headphones">
+
+            <div class="product-content">
+
+                <h3>Headphones</h3>
+
+                <p>Comfortable headphones for music and study.</p>
+
+                <div class="price">
+                    ₹2,500
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Electronics&product=Headphones&price=2500">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CLOTHING -->
+
+    <h2 class="category-title">
+        Clothing
+    </h2>
+
+    <div class="product-container">
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800"
+                 alt="T Shirt">
+
+            <div class="product-content">
+
+                <h3>Classic T-Shirt</h3>
+
+                <p>Comfortable cotton casual T-shirt.</p>
+
+                <div class="price">
+                    ₹799
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Clothing&product=Classic%20T-Shirt&price=799">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1548883354-7622d03aca27?w=800"
+                 alt="Jacket">
+
+            <div class="product-content">
+
+                <h3>Casual Jacket</h3>
+
+                <p>Stylish jacket suitable for everyday use.</p>
+
+                <div class="price">
+                    ₹1,999
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Clothing&product=Casual%20Jacket&price=1999">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1506629905607-d9c297d5a6e1?w=800"
+                 alt="Shoes">
+
+            <div class="product-content">
+
+                <h3>Running Shoes</h3>
+
+                <p>Lightweight shoes for daily activities.</p>
+
+                <div class="price">
+                    ₹2,499
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Clothing&product=Running%20Shoes&price=2499">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- BOOKS -->
+
+    <h2 class="category-title">
+        Books
+    </h2>
+
+    <div class="product-container">
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800"
+                 alt="Programming Book">
+
+            <div class="product-content">
+
+                <h3>Programming Book</h3>
+
+                <p>Learn programming concepts with examples.</p>
+
+                <div class="price">
+                    ₹599
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Books&product=Programming%20Book&price=599">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800"
+                 alt="Novel">
+
+            <div class="product-content">
+
+                <h3>Fiction Novel</h3>
+
+                <p>Interesting fiction book for reading.</p>
+
+                <div class="price">
+                    ₹399
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Books&product=Fiction%20Novel&price=399">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=800"
+                 alt="Study Book">
+
+            <div class="product-content">
+
+                <h3>Study Guide</h3>
+
+                <p>Useful study material for students.</p>
+
+                <div class="price">
+                    ₹499
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Books&product=Study%20Guide&price=499">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ACCESSORIES -->
+
+    <h2 class="category-title">
+        Accessories
+    </h2>
+
+    <div class="product-container">
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800"
+                 alt="Watch">
+
+            <div class="product-content">
+
+                <h3>Wrist Watch</h3>
+
+                <p>Simple and stylish wrist watch.</p>
+
+                <div class="price">
+                    ₹1,499
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Accessories&product=Wrist%20Watch&price=1499">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800"
+                 alt="Bag">
+
+            <div class="product-content">
+
+                <h3>Travel Bag</h3>
+
+                <p>Spacious and useful bag for travel.</p>
+
+                <div class="price">
+                    ₹1,299
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Accessories&product=Travel%20Bag&price=1299">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="product">
+
+            <img src="https://images.unsplash.com/photo-1600086827875-a63b01f1335c?w=800"
+                 alt="Backpack">
+
+            <div class="product-content">
+
+                <h3>Backpack</h3>
+
+                <p>Comfortable backpack for college and travel.</p>
+
+                <div class="price">
+                    ₹999
+                </div>
+
+                <a class="order-button"
+                   href="registration.html?category=Accessories&product=Backpack&price=999">
+                    Place Order
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+    <div class="feature">
+
+        <h3>Good Quality</h3>
+
+        <p>
+            Browse our collection of useful products.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <h3>Simple Shopping</h3>
+
+        <p>
+            Select your product and place your order easily.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <h3>Easy Checkout</h3>
+
+        <p>
+            Enter your details and save your order in the database.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    &copy; 2026 QuickBuy Online Store
+
+</footer>
+
+
+</body>
+
+</html>
