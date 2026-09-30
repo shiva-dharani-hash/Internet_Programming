@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.php.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/php-project/1">
+            <name>OnlineAttendanceSystem</name>
+        </data>
+        <confs xmlns="http://www.netbeans.org/ns/php-project/1">
+            <conf name="Run Configuration">
+                <name>Run Configuration</name>
+                <preparation>
+                    <webroot>.</webroot>
+                    <index-file>index.php</index-file>
+                </preparation>
+                <run-as>
+                    <web-site>http://localhost</web-site>
+                </run-as>
+                <url>http://localhost/OnlineAttendanceSystem/</url>
+            </conf>
+        </confs>
+    </configuration>
+</project>
